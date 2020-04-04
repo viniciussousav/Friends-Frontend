@@ -1,0 +1,33 @@
+.feed-div, .publication-form{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.publicationCard {
+    width: 100%;
+    margin: 10px auto;
+}
+
+.publication-form mat-form-field {
+    width: 100%;
+    border-right: 5px;
+}
+
+.size-adjust {
+    margin: 0px;
+    display: flex;
+    width: 480px;
+}
+
+.size-adjust2{
+    margin: 0px;
+    display: flex;
+    width: 480px;
+    flex-direction: column;
+}
+
+button {
+    margin: auto 0px auto 10px;
+    height: 50%;
+}

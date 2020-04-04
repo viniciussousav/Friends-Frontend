@@ -1,0 +1,48 @@
+<div class="body-box">
+    <div class="form-group">
+        <div class="info-box">
+            <h3> Please, fill the field bellow to be a participant of this community.</h3>
+            <p> Sign up </p>
+        </div>
+        <div class="form-box">
+
+            <div class="name-box">
+
+                <mat-form-field appearance="outline">
+                    <mat-label> First name </mat-label>
+                    <input matInput [(ngModel)]="name" type="text" placeholder="Ex: Fulano">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label> Surname </mat-label>
+                    <input matInput [(ngModel)]="surname" type="text" placeholder="Silva">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline">
+                <mat-label> Give a description of yourself </mat-label>
+                <input matInput [(ngModel)]="description" type="text" placeholder="I am not a famous person">
+            </mat-form-field>
+
+            <div class="name-box">
+
+                <mat-form-field appearance="outline">
+                    <mat-label> Nickname </mat-label>
+                    <input matInput [(ngModel)] ="nickname" type="text" placeholder="Ex: joaosilva123">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label> Password </mat-label>
+                    <input matInput [(ngModel)] ="password" type="password" placeholder = "***********">
+                </mat-form-field>
+
+            </div>
+            <div class="btn-box">
+                <button class="finish-btn" mat-stroked-button color="primary" (click)="signUp(name, surname, description, nickname, password)"> Finish </button>
+                <button mat-button color="warn" routerLink=''> I have an account </button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

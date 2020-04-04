@@ -1,0 +1,32 @@
+<div class="publication-form">
+
+    <div class="size-adjust">
+        <mat-form-field>
+            <mat-label> Write something nice </mat-label>
+            <input matInput [(ngModel)]="message" maxlength="256" placeholder="Ex. Eae boy">
+            <mat-hint align="start"><strong>Mensagens inapropriadas serão apagas</strong> </mat-hint>
+            <mat-hint align="end">{{message.length}} / 256</mat-hint>
+
+        </mat-form-field>
+
+        <button (click)="postPublication()" mat-stroked-button color="primary"> Post </button>
+    </div>
+
+
+</div>
+
+
+<div class="feed-div">
+    <div class="size-adjust2">
+
+        <mat-card *ngFor="let publication of publications" class="publicationCard">
+            <mat-card-title>{{ publication.author }}</mat-card-title>
+            <mat-card-subtitle>{{ formatDate(publication.date) }}</mat-card-subtitle>
+            <mat-card-content>
+                <p>
+                    {{ publication.content }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

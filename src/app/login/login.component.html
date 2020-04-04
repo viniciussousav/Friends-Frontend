@@ -1,0 +1,26 @@
+<div class="body-box">
+    <div class="form-group">
+        <div class="info-box">
+            <h3> Welcome to the best Vinicius's Friends website ever made.</h3>
+            <p> If you already entered here, tell us your Nickname</p>
+        </div>
+        <div class="form-box">
+
+            <mat-form-field appearance="outline">
+                <mat-label> Nickname </mat-label>
+                <input matInput [(ngModel)] = "nickname" placeholder="Ex: joaosilva123">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label> Password </mat-label>
+                <input matInput [(ngModel)] = "password" type="password" placeholder="Ex: **********">
+            </mat-form-field>
+
+            <div class="btn-box">
+                <button class="finish-btn" (click)="login()" mat-stroked-button color="primary"> Enter </button>
+                <button mat-button color="warn" routerLink='/signup'> Or, sign up </button>
+            </div>
+            <h6 id = "errorMsg" *ngIf = "error">Login e senha incompatíveis, tente novamente</h6>
+        </div>
+    </div>
+</div>
