@@ -2,12 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { FeedService } from './feed.service';
 import { LoginService } from '../login/login.service';
 
+export interface Publication {
+  id: String,
+  author: String,
+  content: String
+}
+
+
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
+
 
   author: String;
   message: String;
@@ -33,7 +41,16 @@ export class FeedComponent implements OnInit {
         this.getPublications();
       })
     }
+  }
 
+  showDelete(user: String){
+    return this.author == user;
+  }
+
+  deletePublication(id: String){
+    this.feedService.deletePublication(id).subscribe(() => {
+      this.getPublications();
+    });
   }
 
   formatDate(date) {

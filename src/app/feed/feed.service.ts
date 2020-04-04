@@ -29,4 +29,8 @@ export class FeedService {
 
     return this.http.post<any>(this.url, JSON.stringify(publication), { headers: this.headers });
   }
+
+  deletePublication(id: String){
+    return this.http.delete<any>(this.url + '/' + id, {headers: this.headers});
+  }
 }

@@ -27,6 +27,9 @@
                     {{ publication.content }}
                 </p>
             </mat-card-content>
+            <mat-card-actions >
+                <button *ngIf="showDelete(publication.author)" (click)="deletePublication(publication._id)" mat-button>Excluir</button>
+            </mat-card-actions>
         </mat-card>
     </div>
 </div>
