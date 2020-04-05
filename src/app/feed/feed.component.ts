@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedService } from './feed.service';
 import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
 
 export interface Publication {
   id: String,
@@ -22,13 +23,16 @@ export class FeedComponent implements OnInit {
 
   publications: any[] = [];
 
-  constructor(private feedService: FeedService, private loginService: LoginService) {
+  constructor(private feedService: FeedService, private loginService: LoginService, private router: Router) {
     this.message = "";
     this.author = loginService.getUser();
   }
 
   ngOnInit() {
     this.getPublications();
+    if(this.author == ""){
+      this.router.navigate(['/']);
+    }
   }
 
   getPublications() {
@@ -44,7 +48,7 @@ export class FeedComponent implements OnInit {
   }
 
   showDelete(user: String){
-    return this.author == user;
+    return this.author == user || this.author == "viniciussousav";
   }
 
   deletePublication(id: String){

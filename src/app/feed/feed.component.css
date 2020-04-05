@@ -1,18 +1,32 @@
+
+.user-title {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+
 .feed-div, .publication-form{
     display: flex;
     justify-content: center;
     margin: 20px;
 }
-
 .publicationCard {
-    width: 100%;
-    margin: 10px auto;
+    margin: 5px 0px;
 }
 
 .publication-form mat-form-field {
     width: 100%;
     border-right: 5px;
+    margin: 10px auto;
 }
+
+.publicationCard mat-card-actions {
+    display: flex;
+}
+
+.publicationCard mat-card-actions button{
+    margin: auto 10px auto auto;
+} 
 
 .size-adjust {
     margin: 0px;

@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
   signUp(name: String, surname: String, description: String, nickname: String, password: String) {
 
 
-    if(name.length != 0 && surname.length != 0 && description.length != 0 && nickname.length != 0 && password.length != 0){
+    if(name.length > 3 && surname.length > 3 && description.length != 5 && nickname.length != 3 && password.length != 3){
       this.signUpService.add(name, surname, description, nickname, password).subscribe((user) => {
         if (user) {
           this.name = "";
