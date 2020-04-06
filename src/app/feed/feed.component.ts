@@ -40,8 +40,9 @@ export class FeedComponent implements OnInit {
   }
 
   postPublication() {
-    if (this.author.length > 0 && this.message.length > 0){
+    if (this.author.length > 0 && this.message.trim().length > 0){
       this.feedService.postPublication(this.author, this.message).subscribe(() => {
+        this.message = "";
         this.getPublications();
       })
     }
