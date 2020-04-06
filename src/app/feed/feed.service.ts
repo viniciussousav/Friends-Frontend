@@ -25,9 +25,17 @@ export class FeedService {
       author: author,
       content: content
     };
-    console.log(publication.content, publication.content);
 
     return this.http.post<any>(this.url, JSON.stringify(publication), { headers: this.headers });
+  }
+
+  postComment(author: String, content: String, id: String) {
+    var comment = {
+      author: author,
+      content: content
+    }
+
+    return this.http.put<any>(this.url + '/' + id, comment, {headers: this.headers})
   }
 
   deletePublication(id: String){

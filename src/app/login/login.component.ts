@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -11,27 +12,28 @@ export class LoginComponent implements OnInit {
 
    nickname: String;
    password: String;
-   error: boolean;
 
 
-  constructor(private loginService: LoginService, private router: Router) { 
+  constructor(private loginService: LoginService, private router: Router, private snackBar: MatSnackBar) { 
     this.nickname = "";
     this.password = "";
-    this.error = false;
   }
 
   ngOnInit() {
-
+    this.loginService.setUser("");
   }
 
   login(){
+
+    this.snackBar.open("Logando...", "Fechar", {duration: 2000} );
+    
     return this.loginService.login(this.nickname, this.password).subscribe(a => {
       if(a){
+        this.snackBar.open("Logado!", "Fechar", {duration: 2000} );
         this.loginService.setUser(this.nickname);
-        console.log(this.loginService.getUser());
         this.router.navigate(['/feed']);
       } else {
-        this.error = true;
+        this.snackBar.open("Dados incorretos", "Entendi", {duration: 3000} );
       }
     });
   }

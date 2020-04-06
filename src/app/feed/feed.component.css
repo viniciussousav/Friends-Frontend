@@ -17,7 +17,7 @@
 .publication-form mat-form-field {
     width: 100%;
     border-right: 5px;
-    margin: 10px auto;
+    margin: 10px 20px 10px 0px;
 }
 
 .publicationCard mat-card-actions {
@@ -34,6 +34,11 @@
     width: 480px;
 }
 
+.size-adjust button{
+    margin: auto 0px auto 0px;
+    height: 50%;
+}
+
 .size-adjust2{
     margin: 0px;
     display: flex;
@@ -41,7 +46,21 @@
     flex-direction: column;
 }
 
-button {
+#deleteBtn {
     margin: auto 0px auto 10px;
     height: 50%;
+}
+
+#comentarBtn{
+    margin: auto auto auto 0px;
+    height: 50%;
+}
+
+.publicationCard mat-form-field {
+    width: 100%;
+}
+
+
+.comment-card {
+    margin: 20px auto;
 }

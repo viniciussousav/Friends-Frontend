@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FeedService } from './feed.service';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 export interface Publication {
   id: String,
@@ -23,7 +24,7 @@ export class FeedComponent implements OnInit {
 
   publications: any[] = [];
 
-  constructor(private feedService: FeedService, private loginService: LoginService, private router: Router) {
+  constructor(private feedService: FeedService, private loginService: LoginService, private router: Router, private snackBar: MatSnackBar) {
     this.message = "";
     this.author = loginService.getUser();
   }
@@ -40,9 +41,21 @@ export class FeedComponent implements OnInit {
   }
 
   postPublication() {
+    this.snackBar.open("Publicando...", "Fechar", {duration: 2000} );
+
     if (this.author.length > 0 && this.message.trim().length > 0){
       this.feedService.postPublication(this.author, this.message).subscribe(() => {
+        this.snackBar.open("Publicado!", "Fechar", {duration: 2000} );
         this.message = "";
+        this.getPublications();
+      })
+    }
+  }
+
+  postComment(content: String, id: String) {
+    console.log("está clicando");
+    if(content.trim().length > 0){
+      this.feedService.postComment(this.author, content, id).subscribe(() => {
         this.getPublications();
       })
     }
@@ -60,7 +73,7 @@ export class FeedComponent implements OnInit {
 
   formatDate(date) {
     var newDate: Date = new Date(date);
-    return "Publicado em " + newDate.toLocaleDateString() + " as " + newDate.toLocaleTimeString();
+    return "em " + newDate.toLocaleDateString() + " as " + newDate.toLocaleTimeString();
   }
 
 }

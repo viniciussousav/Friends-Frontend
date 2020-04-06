@@ -6,7 +6,7 @@ import { FormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, MatListModule, MatSnackBarModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FeedComponent } from './feed/feed.component';
@@ -28,8 +28,9 @@ import { FeedComponent } from './feed/feed.component';
     MatInputModule,
     MatButtonModule,
     HttpClientModule,
-    MatCardModule
-    
+    MatCardModule,
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

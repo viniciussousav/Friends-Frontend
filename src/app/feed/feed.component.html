@@ -1,4 +1,4 @@
-<div class="user-title" >
+<div class="user-title">
     <p> {{ "Você está logado como " + this.author + "!"}} </p>
 </div>
 
@@ -6,14 +6,14 @@
 
     <div class="size-adjust">
         <mat-form-field>
-            <mat-label> Write something nice </mat-label>
+            <mat-label> Escreva algo legal </mat-label>
             <input matInput [(ngModel)]="message" maxlength="256" placeholder="Ex. Eae boy">
             <mat-hint align="start"><strong>Mensagens inapropriadas serão apagadas</strong> </mat-hint>
             <mat-hint align="end">{{message.length}} / 256</mat-hint>
 
         </mat-form-field>
 
-        <button (click)="postPublication()" mat-stroked-button color="primary"> Post </button>
+        <button (click)="postPublication()" mat-raised-button color="primary"> Post </button>
     </div>
 
 
@@ -31,8 +31,24 @@
                     {{ publication.content }}
                 </p>
             </mat-card-content>
-            <mat-card-actions >
-                <button *ngIf="showDelete(publication.author)" (click)="deletePublication(publication._id)" mat-button color="warn">Excluir</button>
+
+
+            <mat-card *ngFor="let comment of publication.comments" class="comment-card">
+                <mat-card-subtitle><b> {{comment.author}} </b> {{ formatDate(comment.date)}} </mat-card-subtitle>
+                <mat-card-content> {{comment.content}} </mat-card-content>
+            </mat-card>
+
+
+            <mat-form-field>
+                <mat-label> Comentar </mat-label>
+                <input #commentfield matInput type="text" placeholder="Deixe seu comentário">
+            </mat-form-field>
+
+            <mat-card-actions>
+                <button id="comentarBtn" (click)="postComment(commentfield.value, publication._id)" mat-button color="primary"> Comentar </button>
+                <button id="deleteBtn" *ngIf="showDelete(publication.author)"
+                    (click)="deletePublication(publication._id)" mat-button color="warn">Excluir postagem</button>
+
             </mat-card-actions>
         </mat-card>
     </div>
